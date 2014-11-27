@@ -1,0 +1,5 @@
+<% if @websites_content.present? %>
+	$('#urls').prepend("<%= raw escape_javascript(@websites_content) %>");
+	$('#website_last_synchronized_at').val('<%= Website.last_synchronized_at %>');
+	$('#website_url').val('');
+<% end %>

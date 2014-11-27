@@ -1,0 +1,46 @@
+// Place all the styles related to the websites controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#website {
+	background: #3694d6 url(/assets/background-pattern-2.svg) center right;
+	background-size: cover;
+}
+
+#website #website-content, #website #home-content {
+	zoom: 1;
+	background: none;
+}
+
+.enter_website_form {
+	margin-top: 4em;
+}
+
+#website .reg-form {
+	max-width: 540px;
+	margin: 0 auto;
+	padding: 30px 40px;
+	background: #fff;
+	border-radius: 5px;
+}
+
+#website .reg-form p {
+	font-size: 14px;
+	line-height: 22px;
+}
+
+#website .reg-form label {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#website .reg-form .text-input {
+	width: 100%;
+	border: 1px solid #d1d1d1;
+	padding-top: .6em;
+	paddint-bottom: .6em;
+	font-size: 16px;
+	font-weight: bold;
+	background: #fff;
+}

@@ -1,0 +1,29 @@
+<body id="website" class="auth">
+  <div id="website-content">
+    <section class="grid grid-pad">
+    	<%= form_for @website, url: {action: "create"}, html: {class: "enter_website_form"} do |f| %>
+    		<fieldset class="reg-form">
+	    		<p>
+	    			<label for="website_url">Website URL:</label>
+	    			<%= f.hidden_field :last_synchronized_at %>
+		    		<%= f.text_field :url, class: "text-input" %>
+		    	</p>
+		    	<p id="urls">
+		    		<%= raw @websites_content %>
+		    	</p>
+	    	</fieldset>
+    	<% end %>
+
+  	</section>
+  </div>
+</div>
+
+<script language="JavaScript">
+
+	$(document).ready(function() {
+		setInterval(function() {
+      //window.synchronize_websites_function();
+		}, 15000);
+	});
+
+</script>
