@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #website {
-	background: #3694d6 url(/assets/background-pattern-2.svg) center right;
+	background: #3694d6 url(asset_path('background-pattern-2.svg', image)) center right;
 	background-size: cover;
 }
 
