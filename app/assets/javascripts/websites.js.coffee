@@ -10,18 +10,18 @@ $(document).on 'submit', 'form.enter_website_form', (event) ->
   website_url = $(this).find('#website_url').val()
 
   if window.learnRegExp(website_url)
-    console.log "website url: " + website_url	
+    console.log "website url: " + website_url 
     $.ajax
-	    url: formURL
-	    beforeSend : (xhr) -> 
-	      xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
-	    type: 'POST'
-	    dataType: "script"
-	    data:  formData
-	    contentType: false
-	    cache: false
-	    processData: false
-	    success: (response) ->
+      url: formURL
+      beforeSend : (xhr) -> 
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      type: 'POST'
+      dataType: "script"
+      data:  formData
+      contentType: false
+      cache: false
+      processData: false
+      success: (response) ->
 
   else
     console.log "Invalid website url!"
