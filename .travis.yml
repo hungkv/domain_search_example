@@ -1,9 +1,12 @@
 language: ruby
 
 before_script:
+  - sh -c "if [ '$DB' = 'postgresql' ]; then psql -c 'DROP DATABASE IF EXISTS search_example;' -U postgres; fi"
+  - sh -c "if [ '$DB' = 'postgresql' ]; then psql -c 'create database search_example;' -U  postgres; fi"
+  - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'create database IF NOT EXISTS search_example;'; fi"
   - bundle install
   - cp config/database.yml.travis config/database.yml
-  - bundle exec rake db:create db:migrate
+  - bundle exec rake db:migrate
 
 bundler_args: --without development --jobs=3 --retry=3
 
@@ -11,26 +14,23 @@ cache: bundler
 
 env:
   matrix:
-    - CI_ORM=active_record CI_DB_ADAPTER=sqlite3
+    - CI_ORM=active_record DB=sqlite3
 
 rvm:
   - 1.9.3
   - 2.0.0
   - 2.1
 
-services:
-  - mongodb
-
 sudo: false
 
 matrix:
   include:
     - rvm: 2.1
-      env: RAILS_VERSION=4.2 CI_ORM=active_record CI_DB_ADAPTER=sqlite3
+      env: RAILS_VERSION=4.2 CI_ORM=active_record DB=sqlite3
     - rvm: 2.1
-      env: CI_ORM=active_record CI_DB_ADAPTER=mysql2
+      env: CI_ORM=active_record DB=mysql
     - rvm: 2.1
-      env: CI_ORM=active_record CI_DB_ADAPTER=postgresql CI_DB_USERNAME=postgres
+      env: CI_ORM=active_record DB=postgresql
     - rvm: 2.1
-      env: RAILS_VERSION=4.0 CI_ORM=active_record CI_DB_ADAPTER=sqlite3
+      env: RAILS_VERSION=4.0 CI_ORM=active_record DB=sqlite3
   fast_finish: true
