@@ -14,7 +14,7 @@ cache: bundler
 
 env:
   matrix:
-    - CI_ORM=active_record DB=sqlite3
+    - CI_ORM=active_record DB=sqlite
 
 rvm:
   - 1.9.3
@@ -26,11 +26,11 @@ sudo: false
 matrix:
   include:
     - rvm: 2.1
-      env: RAILS_VERSION=4.2 CI_ORM=active_record DB=sqlite3
+      env: RAILS_VERSION=4.2 CI_ORM=active_record DB=sqlite
     - rvm: 2.1
       env: CI_ORM=active_record DB=mysql
     - rvm: 2.1
       env: CI_ORM=active_record DB=postgresql
     - rvm: 2.1
-      env: RAILS_VERSION=4.0 CI_ORM=active_record DB=sqlite3
+      env: RAILS_VERSION=4.0 CI_ORM=active_record DB=sqlite
   fast_finish: true
